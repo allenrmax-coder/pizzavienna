@@ -32,7 +32,7 @@ const SALAD_DRESSINGS = [
 
 // Verified Unsplash IDs (cropped square)
 const IMG = {
-  pizzaCheese: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&q=80&fit=crop',
+  pizzaCheese: '/menu/cheesepizza.png',
   pizzaPepperoni: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80&fit=crop',
   pizzaSpecialty: 'https://images.unsplash.com/photo-1593504049359-74330189a345?w=600&q=80&fit=crop',
   pizzaMargherita: 'https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=600&q=80&fit=crop',

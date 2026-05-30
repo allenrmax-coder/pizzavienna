@@ -159,6 +159,21 @@
     color: var(--color-flame);
   }
 
+  /* ============ Deal Cards (specials posters) ============ */
+  .deal-card {
+    @apply relative block aspect-square overflow-hidden rounded-sm bg-navy shadow-md transition-all duration-300;
+  }
+  .deal-card img {
+    @apply h-full w-full object-cover transition-transform duration-500;
+  }
+  .deal-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 40px -20px rgba(15, 27, 51, 0.45);
+  }
+  .deal-card:hover img {
+    transform: scale(1.04);
+  }
+
   /* ============ Menu Block & Grid ============ */
   .menu-block {
     @apply scroll-mt-32;
