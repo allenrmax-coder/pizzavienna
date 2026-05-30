@@ -27,242 +27,122 @@
   <body class="bg-cream text-navy antialiased">
     <!-- Loader -->
     <div id="loader" class="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden">
-      <!-- Brick texture background -->
-      <div class="absolute inset-0 opacity-[0.07]" aria-hidden="true">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="loader-brick" width="80" height="40" patternUnits="userSpaceOnUse">
-              <rect width="78" height="18" fill="#fff" opacity="0.5"/>
-              <rect x="40" y="20" width="78" height="18" fill="#fff" opacity="0.5"/>
-              <rect x="-40" y="20" width="78" height="18" fill="#fff" opacity="0.5"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#loader-brick)"/>
-        </svg>
-      </div>
+      <!-- Pulsing warm glow behind the scene -->
+      <div class="loader-glow absolute left-1/2 top-1/2 h-[480px] w-[680px] -translate-x-1/2 -translate-y-[58%] rounded-full" aria-hidden="true"></div>
 
-      <!-- Pulsing warm glow -->
-      <div class="loader-glow absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-[55%] rounded-full" aria-hidden="true"></div>
-
-      <div class="relative flex flex-col items-center gap-6">
-        <!-- Brick oven scene -->
+      <div class="relative flex flex-col items-center gap-8">
+        <!-- Brick oven scene — clean illustration style -->
         <div class="relative h-48 w-80 sm:w-96">
-          <svg id="loaderPizza" viewBox="0 0 440 260" class="h-full w-full">
+          <svg id="loaderPizza" viewBox="0 0 440 280" class="h-full w-full">
             <defs>
-              <linearGradient id="crustGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#F0BB6B"/>
-                <stop offset="60%" stop-color="#D89248"/>
-                <stop offset="100%" stop-color="#A86529"/>
-              </linearGradient>
-              <linearGradient id="cheeseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#FFE085"/>
-                <stop offset="55%" stop-color="#F5BA3C"/>
-                <stop offset="100%" stop-color="#E59226"/>
-              </linearGradient>
-              <radialGradient id="pepGrad" cx="35%" cy="30%" r="80%">
-                <stop offset="0%" stop-color="#E04848"/>
-                <stop offset="55%" stop-color="#B01D2B"/>
-                <stop offset="100%" stop-color="#6D0815"/>
+              <!-- Subtle warm gradient for the fire interior -->
+              <radialGradient id="fireGlow" cx="50%" cy="100%" r="70%">
+                <stop offset="0%" stop-color="#FFC85A"/>
+                <stop offset="50%" stop-color="#E0651F"/>
+                <stop offset="100%" stop-color="#3a0a05"/>
               </radialGradient>
-              <radialGradient id="sauceGrad" cx="50%" cy="40%" r="70%">
-                <stop offset="0%" stop-color="#D4233B"/>
-                <stop offset="100%" stop-color="#9D0208"/>
-              </radialGradient>
+              <!-- Flame body — bright yellow center fading to amber -->
+              <linearGradient id="flameBody" x1="50%" y1="100%" x2="50%" y2="0%">
+                <stop offset="0%" stop-color="#FFD668"/>
+                <stop offset="100%" stop-color="#FF8A2A"/>
+              </linearGradient>
+              <!-- Pizza crust — flat warm brown -->
+              <linearGradient id="crust" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#E1A763"/>
+                <stop offset="100%" stop-color="#A86C30"/>
+              </linearGradient>
+              <!-- Soft dome shadow at the base -->
+              <linearGradient id="domeShade" x1="50%" y1="0%" x2="50%" y2="100%">
+                <stop offset="0%" stop-color="#C04E2C" stop-opacity="0"/>
+                <stop offset="80%" stop-color="#5a1c12" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#3d0e07" stop-opacity="0.55"/>
+              </linearGradient>
 
-              <linearGradient id="brickGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#B85937"/>
-                <stop offset="100%" stop-color="#7A3520"/>
-              </linearGradient>
-              <linearGradient id="brickRow" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#9D4022"/>
-                <stop offset="100%" stop-color="#6D2A15"/>
-              </linearGradient>
-              <radialGradient id="ovenMouthGlow" cx="50%" cy="70%" r="80%">
-                <stop offset="0%" stop-color="#FFB347"/>
-                <stop offset="40%" stop-color="#E89342"/>
-                <stop offset="80%" stop-color="#A12A1F"/>
-                <stop offset="100%" stop-color="#1a0a05"/>
-              </radialGradient>
-              <radialGradient id="emberGlow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#FFD97A" stop-opacity="1"/>
-                <stop offset="100%" stop-color="#E89342" stop-opacity="0"/>
-              </radialGradient>
-              <linearGradient id="flameGrad" x1="50%" y1="100%" x2="50%" y2="0%">
-                <stop offset="0%" stop-color="#F5BA3C"/>
-                <stop offset="60%" stop-color="#E89342"/>
-                <stop offset="100%" stop-color="#D43A2F"/>
-              </linearGradient>
-              <linearGradient id="peelHandle" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#A87445"/>
-                <stop offset="100%" stop-color="#6D4628"/>
-              </linearGradient>
-              <linearGradient id="peelPaddle" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#C99770"/>
-                <stop offset="50%" stop-color="#A87445"/>
-                <stop offset="100%" stop-color="#6D4628"/>
-              </linearGradient>
-              <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/>
-                <feOffset dx="0" dy="2" result="offsetblur"/>
-                <feComponentTransfer><feFuncA type="linear" slope="0.4"/></feComponentTransfer>
-                <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-              <!-- Clip-path that exactly matches the dome silhouette — used to keep all
-                   brick decorations strictly inside the oven shape -->
               <clipPath id="domeClip">
-                <path d="M 20 220 L 20 130 Q 20 28 130 28 Q 240 28 240 130 L 240 220 L 20 220 Z"/>
-              </clipPath>
-              <!-- Clip-path for the cave area (used to keep flames + glows inside the mouth) -->
-              <clipPath id="caveClip">
-                <path d="M 75 220 L 75 175 Q 75 130 130 130 Q 185 130 185 175 L 185 220 Z"/>
+                <path d="M 30 220 L 30 130 Q 30 30 130 30 Q 230 30 230 130 L 230 220 Z"/>
               </clipPath>
             </defs>
 
-            <!-- Hearth/counter at the bottom -->
-            <rect x="0" y="218" width="440" height="42" fill="#3a2418"/>
-            <rect x="0" y="218" width="440" height="4" fill="#5a3825"/>
-            <ellipse cx="130" cy="218" rx="180" ry="14" fill="#1a0a05" opacity="0.5"/>
+            <!-- Hearth -->
+            <rect x="0" y="220" width="440" height="60" fill="#1f140e"/>
+            <rect x="0" y="220" width="440" height="2" fill="#4a2f20"/>
+            <ellipse cx="130" cy="220" rx="170" ry="6" fill="#0a0402" opacity="0.5"/>
 
-            <!-- Warm halo overlay -->
-            <ellipse cx="130" cy="195" rx="160" ry="80" fill="url(#emberGlow)" opacity="0.22"/>
-
-            <!-- BRICK BODY (with arch cutout that reveals the cave) -->
-            <g class="oven-body" clip-path="url(#domeClip)">
-              <!-- Brick body color (full dome) -->
-              <path fill="url(#brickGrad)" d="M 20 220 L 20 130 Q 20 28 130 28 Q 240 28 240 130 L 240 220 L 20 220 Z"/>
-
-              <!-- Curved brick rows -->
-              <path d="M 22 60 Q 130 35 238 60" stroke="#5e2b1a" stroke-width="1.5" fill="none" opacity="0.5"/>
-              <path d="M 20 95 Q 130 70 240 95" stroke="#5e2b1a" stroke-width="1.5" fill="none" opacity="0.45"/>
-              <path d="M 20 130 Q 130 110 240 130" stroke="#5e2b1a" stroke-width="1.5" fill="none" opacity="0.4"/>
-              <path d="M 20 165 L 240 165" stroke="#5e2b1a" stroke-width="1.5" fill="none" opacity="0.35"/>
-              <path d="M 20 200 L 240 200" stroke="#5e2b1a" stroke-width="1.5" fill="none" opacity="0.3"/>
-
-              <!-- Brick vertical seams (clipped to dome) -->
-              <g opacity="0.35" stroke="#5e2b1a" stroke-width="1.2" fill="none">
-                <line x1="55"  y1="48"  x2="55"  y2="60"/>
-                <line x1="95"  y1="40"  x2="95"  y2="58"/>
-                <line x1="135" y1="36"  x2="135" y2="58"/>
-                <line x1="175" y1="40"  x2="175" y2="58"/>
-                <line x1="215" y1="50"  x2="215" y2="60"/>
-                <line x1="40"  y1="68"  x2="40"  y2="93"/>
-                <line x1="80"  y1="68"  x2="80"  y2="93"/>
-                <line x1="120" y1="68"  x2="120" y2="93"/>
-                <line x1="160" y1="68"  x2="160" y2="93"/>
-                <line x1="200" y1="68"  x2="200" y2="93"/>
-                <line x1="55"  y1="100" x2="55"  y2="128"/>
-                <line x1="100" y1="100" x2="100" y2="128"/>
-                <line x1="160" y1="100" x2="160" y2="128"/>
-                <line x1="205" y1="100" x2="205" y2="128"/>
-                <line x1="35"  y1="135" x2="35"  y2="163"/>
-                <line x1="50"  y1="170" x2="50"  y2="198"/>
-                <line x1="210" y1="170" x2="210" y2="198"/>
-                <line x1="35"  y1="203" x2="35"  y2="218"/>
-                <line x1="225" y1="203" x2="225" y2="218"/>
-              </g>
-
-              <!-- Soft highlight on the dome's left curve -->
-              <path d="M 22 130 Q 28 60 65 35" stroke="#D88058" stroke-width="2" fill="none" opacity="0.35"/>
+            <!-- OVEN DOME — clean terracotta with subtle inner shading -->
+            <g clip-path="url(#domeClip)">
+              <path d="M 30 220 L 30 130 Q 30 30 130 30 Q 230 30 230 130 L 230 220 Z" fill="#B14528"/>
+              <!-- Soft inner shading at base -->
+              <rect x="0" y="120" width="260" height="100" fill="url(#domeShade)"/>
+              <!-- Two subtle brick rows for hint of texture, very low contrast -->
+              <path d="M 38 95 Q 130 78 222 95"  stroke="#7a2818" stroke-width="1" fill="none" opacity="0.35"/>
+              <path d="M 32 145 Q 130 132 228 145" stroke="#7a2818" stroke-width="1" fill="none" opacity="0.3"/>
+              <!-- Highlight on top-left for depth -->
+              <ellipse cx="80" cy="65" rx="42" ry="20" fill="#fff" opacity="0.08"/>
             </g>
 
+            <!-- Rim shadow around the dome silhouette (subtle outline) -->
+            <path d="M 30 220 L 30 130 Q 30 30 130 30 Q 230 30 230 130 L 230 220" stroke="#3d0e07" stroke-width="1.5" fill="none" opacity="0.6"/>
 
-            <!-- DARK CAVE FLOOR + GLOW (inside the arched cutout — pizza will sit in front of this) -->
-            <g class="oven-interior">
-              <!-- Cave back-wall darkness -->
-              <path d="M 75 220 L 75 175 Q 75 130 130 130 Q 185 130 185 175 L 185 220 Z" fill="#180a05"/>
-              <!-- Arch top heavy shadow -->
-              <path d="M 75 175 Q 75 130 130 130 Q 185 130 185 175 L 178 175 Q 178 138 130 138 Q 82 138 82 175 Z" fill="#0a0402"/>
-              <!-- Hot orange-red glow filling the cave (this is what the pizza will sit IN FRONT of) -->
-              <path d="M 85 218 L 85 178 Q 85 142 130 142 Q 175 142 175 178 L 175 218 Z" fill="url(#ovenMouthGlow)"/>
-              <!-- Brighter glow at the fire bed (bottom of cave) -->
-              <ellipse cx="130" cy="215" rx="48" ry="10" fill="#FFB347" opacity="0.85"/>
+            <!-- OVEN MOUTH (cave) — clean arched opening with warm gradient -->
+            <path d="M 80 220 L 80 170 Q 80 125 130 125 Q 180 125 180 170 L 180 220 Z" fill="url(#fireGlow)"/>
+            <!-- Inner rim darkening (depth into the cave) -->
+            <path d="M 80 170 Q 80 125 130 125 Q 180 125 180 170 L 175 170 Q 175 132 130 132 Q 85 132 85 170 Z" fill="#1a0a05" opacity="0.7"/>
+            <!-- Bright glow at fire bed -->
+            <ellipse cx="130" cy="215" rx="42" ry="6" fill="#FFB347" opacity="0.85"/>
+
+            <!-- Flames inside the cave — three simple shapes, animated gently -->
+            <g class="flames">
+              <path class="fl fl1" d="M 105 218 Q 100 200 110 184 Q 113 196 110 206 Q 118 196 117 210 Q 114 218 105 218 Z" fill="url(#flameBody)"/>
+              <path class="fl fl2" d="M 132 220 Q 124 198 134 176 Q 140 192 135 204 Q 146 192 146 210 Q 142 220 132 220 Z" fill="url(#flameBody)"/>
+              <path class="fl fl3" d="M 158 218 Q 154 202 162 186 Q 165 198 162 206 Q 170 198 169 210 Q 167 218 158 218 Z" fill="url(#flameBody)"/>
             </g>
 
-            <!-- BACK FLAMES (small flames at the back of the cave, behind where the pizza will sit) -->
-            <g class="back-flames">
-              <ellipse class="ember-glow eg1" cx="100" cy="213" rx="18" ry="5" fill="url(#emberGlow)"/>
-              <ellipse class="ember-glow eg2" cx="160" cy="213" rx="16" ry="4" fill="url(#emberGlow)"/>
-
-              <path class="oven-flame of-back-1" d="M 100 218 C 96 205 100 192 106 184 C 108 192 110 198 108 204 C 114 196 118 200 114 212 C 112 218 108 220 100 218 Z" fill="url(#flameGrad)" opacity="0.95"/>
-              <path class="oven-flame of-back-2" d="M 158 218 C 154 206 156 194 162 186 C 164 194 166 200 164 206 C 170 198 174 204 170 214 C 168 220 164 220 158 218 Z" fill="url(#flameGrad)" opacity="0.95"/>
-            </g>
-
-            <!-- PIZZA INSIDE THE FIRE (rendered HERE so it sits ON TOP of the cave/glow/back-flames but BEHIND the front flames). Starts at cx=130 (inside the fire), animates to cx=290 (outside the oven on the hearth). -->
+            <!-- PIZZA ON PEEL — slides from inside fire to outside.
+                 Pizza centered at cx=290 in this frame; animation starts at translateX(-160px). -->
             <g class="peel-group">
-              <!-- Wooden peel handle (long thin) -->
-              <rect x="290" y="195" width="150" height="5" rx="2.5" fill="url(#peelHandle)"/>
-              <rect x="425" y="192" width="15" height="11" rx="3" fill="#5a3a20"/>
+              <!-- Wooden peel handle -->
+              <rect x="290" y="194" width="145" height="4" rx="2" fill="#7E5631"/>
+              <rect x="420" y="190" width="15" height="11" rx="2.5" fill="#5a3a20"/>
 
-              <!-- Peel paddle -->
-              <path d="M 235 210 L 235 198 Q 235 188 250 188 L 340 188 Q 350 188 350 198 L 350 210 Q 350 213 340 213 L 245 213 Q 235 213 235 210 Z" fill="url(#peelPaddle)"/>
+              <!-- Paddle -->
+              <path d="M 240 211 L 240 198 Q 240 188 252 188 L 340 188 Q 350 188 350 198 L 350 211 Q 350 213 340 213 L 250 213 Q 240 213 240 211 Z" fill="#A87445"/>
+              <!-- Paddle subtle wood grain highlight -->
+              <path d="M 250 193 L 340 193" stroke="#c9a26d" stroke-width="0.8" opacity="0.5"/>
 
-              <!-- The pizza itself -->
+              <!-- Pizza shadow under -->
+              <ellipse cx="290" cy="208" rx="45" ry="3" fill="#000" opacity="0.18"/>
+
+              <!-- Pizza — clean illustrated style -->
               <g class="peel-pizza">
-                <ellipse cx="290" cy="207" rx="45" ry="4" fill="black" opacity="0.25"/>
-                <ellipse cx="290" cy="195" rx="50" ry="14" fill="url(#crustGrad)"/>
-                <ellipse cx="290" cy="193" rx="42" ry="11" fill="url(#sauceGrad)"/>
-                <ellipse cx="290" cy="192" rx="38" ry="9" fill="url(#cheeseGrad)"/>
-                <ellipse cx="270" cy="190" rx="3" ry="1.5" fill="#FFF1B0" opacity="0.8"/>
-                <ellipse cx="302" cy="192" rx="3" ry="1.5" fill="#FFF1B0" opacity="0.8"/>
-                <ellipse cx="285" cy="194" rx="2" ry="1" fill="#FFF1B0" opacity="0.8"/>
-                <g filter="url(#softShadow)">
-                  <ellipse cx="270" cy="189" rx="6" ry="3" fill="url(#pepGrad)"/>
-                  <ellipse cx="290" cy="187" rx="6" ry="3" fill="url(#pepGrad)"/>
-                  <ellipse cx="310" cy="190" rx="6" ry="3" fill="url(#pepGrad)"/>
-                  <ellipse cx="278" cy="195" rx="5" ry="2.5" fill="url(#pepGrad)"/>
-                  <ellipse cx="302" cy="195" rx="5" ry="2.5" fill="url(#pepGrad)"/>
-                </g>
-                <ellipse cx="268" cy="188" rx="1.5" ry="0.8" fill="#FF8866" opacity="0.6"/>
-                <ellipse cx="288" cy="186" rx="1.5" ry="0.8" fill="#FF8866" opacity="0.6"/>
-                <ellipse cx="308" cy="189" rx="1.5" ry="0.8" fill="#FF8866" opacity="0.6"/>
-                <circle cx="260" cy="192" r="0.8" fill="#3D7A3D"/>
-                <circle cx="295" cy="191" r="0.8" fill="#3D7A3D"/>
-                <circle cx="315" cy="194" r="0.8" fill="#3D7A3D"/>
-                <circle cx="280" cy="190" r="0.8" fill="#3D7A3D"/>
+                <!-- Outer crust ring -->
+                <ellipse cx="290" cy="194" rx="48" ry="13" fill="url(#crust)"/>
+                <!-- Crust char marks (subtle, optional) -->
+                <ellipse cx="252" cy="192" rx="3" ry="2" fill="#6b3a18" opacity="0.45"/>
+                <ellipse cx="324" cy="195" rx="2.5" ry="1.5" fill="#6b3a18" opacity="0.4"/>
+                <!-- Sauce + cheese layer -->
+                <ellipse cx="290" cy="192" rx="40" ry="10" fill="#C8102E"/>
+                <ellipse cx="290" cy="192" rx="38" ry="9" fill="#E8B344"/>
+                <!-- Pepperoni — flat with subtle highlight -->
+                <circle cx="273" cy="189" r="4" fill="#9d2027"/>
+                <circle cx="295" cy="187" r="4.2" fill="#9d2027"/>
+                <circle cx="312" cy="190" r="3.8" fill="#9d2027"/>
+                <circle cx="280" cy="196" r="3.6" fill="#9d2027"/>
+                <circle cx="304" cy="196" r="3.4" fill="#9d2027"/>
+                <!-- Pepperoni gloss -->
+                <ellipse cx="272" cy="187.5" rx="1.6" ry="1" fill="#e04848" opacity="0.7"/>
+                <ellipse cx="294" cy="185.5" rx="1.6" ry="1" fill="#e04848" opacity="0.7"/>
+                <ellipse cx="311" cy="188.5" rx="1.4" ry="0.8" fill="#e04848" opacity="0.7"/>
               </g>
             </g>
 
-            <!-- Subtle inner shadow around the mouth arch (depth into oven), drawn over the pizza-in-cave so the dark rim is visible -->
-            <path d="M 75 220 L 75 175 Q 75 130 130 130 Q 185 130 185 175 L 185 220" stroke="#5e2b1a" stroke-width="3" fill="none" opacity="0.6"/>
+            <!-- Inner mouth shadow drawn ON TOP of the pizza-in-cave so the dark rim still defines the arch when pizza is inside -->
+            <path d="M 80 220 L 80 170 Q 80 125 130 125 Q 180 125 180 170 L 180 220" stroke="#3d0e07" stroke-width="2" fill="none" opacity="0.7"/>
 
-            <!-- FRONT FLAMES (drawn AFTER pizza — they cover parts of the pizza when it's still in the fire, then the pizza emerges past them) -->
-            <g class="front-flames">
-              <ellipse class="ember-glow eg3" cx="130" cy="216" rx="38" ry="6" fill="url(#emberGlow)"/>
-
-              <path class="oven-flame of-front-1" d="M 115 218 C 110 200 116 184 124 168 C 128 184 132 194 128 204 C 138 188 144 198 138 212 C 134 218 124 222 115 218 Z" fill="url(#flameGrad)"/>
-              <path class="oven-flame of-front-2" d="M 145 220 C 140 200 146 182 154 168 C 158 184 162 196 158 206 C 168 190 174 200 168 214 C 164 220 154 224 145 220 Z" fill="url(#flameGrad)"/>
-              <path class="oven-flame of-front-3" d="M 165 218 C 160 204 164 192 170 184 C 172 192 174 200 172 206 C 180 198 184 204 180 214 C 178 220 172 220 165 218 Z" fill="url(#flameGrad)" opacity="0.92"/>
-            </g>
-
-            <!-- FLOATING EMBERS drift up out of the mouth -->
-            <g class="embers">
-              <circle class="ember-particle ep1" cx="100" cy="180" r="1.5" fill="#FFD97A"/>
-              <circle class="ember-particle ep2" cx="130" cy="180" r="1.8" fill="#F5BA3C"/>
-              <circle class="ember-particle ep3" cx="155" cy="180" r="1.3" fill="#E89342"/>
-              <circle class="ember-particle ep4" cx="115" cy="180" r="1.6" fill="#FFD97A"/>
-              <circle class="ember-particle ep5" cx="145" cy="180" r="1.5" fill="#F5BA3C"/>
-            </g>
-
-            <!-- EMERGING SPARKS — burst out of the mouth following the pizza as it leaves the fire -->
-            <g class="emerge-sparks">
-              <circle class="spark s1" cx="185" cy="190" r="2" fill="#FFD97A"/>
-              <circle class="spark s2" cx="185" cy="195" r="1.6" fill="#F5BA3C"/>
-              <circle class="spark s3" cx="185" cy="200" r="2.2" fill="#E89342"/>
-              <circle class="spark s4" cx="185" cy="205" r="1.4" fill="#FFD97A"/>
-              <circle class="spark s5" cx="185" cy="185" r="1.8" fill="#F5BA3C"/>
-              <circle class="spark s6" cx="185" cy="210" r="1.2" fill="#E89342"/>
-            </g>
-
-            <!-- HEAT HALO around the pizza after it emerges -->
-            <g class="heat-halo">
-              <ellipse class="halo" cx="290" cy="195" rx="62" ry="22" fill="url(#emberGlow)"/>
-            </g>
-
-            <!-- STEAM rises from the emerged pizza -->
-            <g class="steam-group">
-              <path class="steam s1" d="M 275 180 Q 270 165 277 150 Q 283 135 275 120" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
-              <path class="steam s2" d="M 295 175 Q 300 160 292 145 Q 285 130 295 115" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
-              <path class="steam s3" d="M 315 180 Q 310 165 317 150 Q 323 135 315 120" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+            <!-- STEAM (rises after pizza emerges) -->
+            <g class="steam">
+              <path class="st st1" d="M 278 180 Q 274 168 280 156" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              <path class="st st2" d="M 293 178 Q 298 165 290 153" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              <path class="st st3" d="M 308 180 Q 304 167 311 155" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
             </g>
           </svg>
         </div>

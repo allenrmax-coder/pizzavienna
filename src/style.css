@@ -421,176 +421,74 @@
   50%      { transform: translate(-50%, -55%) scale(1.1); opacity: 1; }
 }
 
-/* ============ Brick oven scene ============ */
+/* ============ Brick oven scene (cleaner illustrated style) ============ */
 
-/* Peel slides + lifts out of the oven mouth, like a chef pulling it out of the fire.
-   Start: pizza at cx=130 (deep in the cave) and 10px lower (at the fire bed).
-   End: pizza at cx=290 (on the hearth, outside the oven) and at normal height. */
+/* Pizza-on-peel slides smoothly from inside the fire to outside the oven.
+   Pure horizontal motion (no jerky lift). 2.2s slide, eased like material design. */
 .peel-group {
-  transform: translateX(-160px) translateY(10px);
-  animation: peelSlideOut 1.8s cubic-bezier(0.22, 0.61, 0.36, 1) 0.4s forwards;
+  transform: translateX(-165px);
+  animation: peelSlide 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
 }
-@keyframes peelSlideOut {
-  0%   { transform: translateX(-160px) translateY(10px); }
-  60%  { transform: translateX(-30px) translateY(-2px); }
-  100% { transform: translateX(0) translateY(0); }
+@keyframes peelSlide {
+  to { transform: translateX(0); }
 }
 
-/* Emerging sparks — burst out of the mouth riding the pizza's heat */
-.spark {
-  transform-box: fill-box;
-  transform-origin: center;
-  opacity: 0;
-}
-.spark.s1 { animation: sparkFly1 1.4s ease-out 1.4s infinite; }
-.spark.s2 { animation: sparkFly2 1.6s ease-out 1.6s infinite; }
-.spark.s3 { animation: sparkFly3 1.3s ease-out 1.8s infinite; }
-.spark.s4 { animation: sparkFly4 1.5s ease-out 1.5s infinite; }
-.spark.s5 { animation: sparkFly5 1.7s ease-out 2.0s infinite; }
-.spark.s6 { animation: sparkFly6 1.4s ease-out 2.2s infinite; }
-
-@keyframes sparkFly1 {
-  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(45px, -55px) scale(0.3); }
-}
-@keyframes sparkFly2 {
-  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(70px, -25px) scale(0.4); }
-}
-@keyframes sparkFly3 {
-  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(55px, -40px) scale(0.3); }
-}
-@keyframes sparkFly4 {
-  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(80px, -10px) scale(0.4); }
-}
-@keyframes sparkFly5 {
-  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(35px, -60px) scale(0.2); }
-}
-@keyframes sparkFly6 {
-  0%   { opacity: 1; transform: translate(0, 0) scale(1); }
-  100% { opacity: 0; transform: translate(95px, -5px) scale(0.3); }
-}
-
-/* Heat halo around pizza — bright at emergence, fades as pizza cools */
-.halo {
-  transform-box: fill-box;
-  transform-origin: center;
-  opacity: 0;
-  animation: haloPulse 4s ease-out 1.8s forwards;
-}
-@keyframes haloPulse {
-  0%   { opacity: 0; transform: scale(0.5); }
-  25%  { opacity: 0.7; transform: scale(1.05); }
-  100% { opacity: 0; transform: scale(1.2); }
-}
-
-/* Once the pizza is out, it bobs gently as if just placed */
+/* Pizza settles with a gentle bob after sliding out */
 .peel-pizza {
-  animation: pizzaBob 2.6s ease-in-out 2.4s infinite;
   transform-box: fill-box;
-  transform-origin: center;
+  transform-origin: 290px 195px;
+  animation: settleBob 3s ease-in-out 3s infinite;
 }
-@keyframes pizzaBob {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50%      { transform: translateY(-2px) rotate(0.6deg); }
+@keyframes settleBob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-1.5px); }
 }
 
-/* Oven flames flickering inside */
-.oven-flame {
+/* Flames flicker softly — slower, gentler than before */
+.fl {
   transform-box: fill-box;
   transform-origin: center bottom;
 }
-.oven-flame.of1 { animation: ovenFlicker1 0.55s ease-in-out infinite; }
-.oven-flame.of2 { animation: ovenFlicker2 0.5s  ease-in-out infinite; }
-.oven-flame.of3 { animation: ovenFlicker3 0.6s  ease-in-out infinite; }
-
-@keyframes ovenFlicker1 {
-  0%, 100% { transform: scaleY(1) scaleX(1); opacity: 0.95; }
-  30%      { transform: scaleY(1.18) scaleX(0.9); opacity: 1; }
-  70%      { transform: scaleY(0.92) scaleX(1.08); opacity: 0.85; }
-}
-@keyframes ovenFlicker2 {
-  0%, 100% { transform: scaleY(1) scaleX(1); opacity: 1; }
-  40%      { transform: scaleY(1.22) scaleX(0.88); opacity: 0.9; }
-  75%      { transform: scaleY(0.95) scaleX(1.05); opacity: 0.85; }
-}
-@keyframes ovenFlicker3 {
-  0%, 100% { transform: scaleY(1) scaleX(1); opacity: 0.9; }
-  35%      { transform: scaleY(1.12) scaleX(0.95); opacity: 1; }
-  65%      { transform: scaleY(0.9) scaleX(1.06); opacity: 0.88; }
+.fl.fl1 { animation: flickerSoft 1.1s ease-in-out infinite; }
+.fl.fl2 { animation: flickerSoft 1.0s ease-in-out infinite 0.25s; }
+.fl.fl3 { animation: flickerSoft 1.2s ease-in-out infinite 0.5s; }
+@keyframes flickerSoft {
+  0%, 100% { transform: scaleY(1) scaleX(1); }
+  50%      { transform: scaleY(1.08) scaleX(0.94); }
 }
 
-/* Ember glow pulse inside oven mouth */
-.ember-glow {
-  transform-box: fill-box;
-  transform-origin: center;
-}
-.ember-glow.eg1 { animation: emberPulse 1.4s ease-in-out infinite; }
-.ember-glow.eg2 { animation: emberPulse 1.7s ease-in-out infinite 0.35s; }
-.ember-glow.eg3 { animation: emberPulse 1.2s ease-in-out infinite 0.6s; }
-
-@keyframes emberPulse {
-  0%, 100% { transform: scale(1); opacity: 0.75; }
-  50%      { transform: scale(1.18); opacity: 1; }
-}
-
-/* Floating embers drift up out of the oven mouth */
-.ember-particle {
-  transform-box: fill-box;
-  transform-origin: center;
-  opacity: 0;
-}
-.ember-particle.ep1 { animation: emberFloat 2.5s ease-out infinite 0.2s; }
-.ember-particle.ep2 { animation: emberFloat 3.0s ease-out infinite 0.8s; }
-.ember-particle.ep3 { animation: emberFloat 2.7s ease-out infinite 1.4s; }
-.ember-particle.ep4 { animation: emberFloat 3.2s ease-out infinite 2.0s; }
-.ember-particle.ep5 { animation: emberFloat 2.4s ease-out infinite 1.0s; }
-
-@keyframes emberFloat {
-  0%   { transform: translate(0, 0) scale(0.6); opacity: 0; }
-  20%  { transform: translate(-3px, -20px) scale(1); opacity: 1; }
-  60%  { transform: translate(4px, -60px) scale(0.85); opacity: 0.8; }
-  100% { transform: translate(-2px, -120px) scale(0.4); opacity: 0; }
-}
-
-/* Steam rises from pizza after it emerges */
-.steam-group {
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out 2.4s forwards;
-}
+/* Steam — gentle vertical wisps that fade in after pizza emerges */
 .steam {
-  stroke-dasharray: 60;
-  stroke-dashoffset: 60;
-  animation: steamRise 2.5s ease-in-out infinite;
+  opacity: 0;
+  animation: showSteam 0.6s ease-out 2.9s forwards;
 }
-.steam.s1 { animation-delay: 0s; }
-.steam.s2 { animation-delay: 0.6s; }
-.steam.s3 { animation-delay: 1.2s; }
-
+.st {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  opacity: 0;
+}
+.st.st1 { animation: steamRise 3s ease-in-out 3s infinite; }
+.st.st2 { animation: steamRise 3s ease-in-out 3.4s infinite; }
+.st.st3 { animation: steamRise 3s ease-in-out 3.8s infinite; }
 @keyframes steamRise {
-  0%   { stroke-dashoffset: 60; opacity: 0; }
-  30%  { opacity: 0.5; }
-  70%  { stroke-dashoffset: 0; opacity: 0.5; }
-  100% { stroke-dashoffset: -60; opacity: 0; }
+  0%   { stroke-dashoffset: 40; opacity: 0; }
+  25%  { opacity: 0.5; }
+  70%  { stroke-dashoffset: 0; opacity: 0.4; }
+  100% { stroke-dashoffset: -30; opacity: 0; }
 }
-
-@keyframes fadeIn {
-  0%   { opacity: 0; }
-  100% { opacity: 1; }
+@keyframes showSteam {
+  to { opacity: 1; }
 }
 
 /* ============ Letter reveal ============ */
 .loader-letter {
   display: inline-block;
   opacity: 0;
-  transform: translateY(20px) rotate(-8deg);
-  animation: letterReveal 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transform: translateY(12px);
+  animation: letterReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @keyframes letterReveal {
-  to { opacity: 1; transform: translateY(0) rotate(0); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Wordmark appears after pizza starts assembling (~1.6s) */
