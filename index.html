@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpeg" href="/logo.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1B2A4E" />
+    <meta
+      name="description"
+      content="Pizza Vienna — wood-fire brick oven pizza, halal wings, subs &amp; salads in Vienna, VA. Order online or call (703) 319-0002."
+    />
+    <meta property="og:title" content="Pizza Vienna — Wood Fire Brick Oven · Vienna, VA" />
+    <meta
+      property="og:description"
+      content="Hand-tossed halal pizza from a real wood-fire brick oven. 235 Maple Ave E, Vienna VA."
+    />
+    <meta property="og:image" content="/logo.jpg" />
+    <meta property="og:type" content="restaurant" />
+    <title>Pizza Vienna — Wood Fire Brick Oven · Vienna, VA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-cream text-navy antialiased">
+    <!-- Loader -->
+    <div id="loader" class="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden">
+      <!-- Brick texture background -->
+      <div class="absolute inset-0 opacity-[0.07]" aria-hidden="true">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="loader-brick" width="80" height="40" patternUnits="userSpaceOnUse">
+              <rect width="78" height="18" fill="#fff" opacity="0.5"/>
+              <rect x="40" y="20" width="78" height="18" fill="#fff" opacity="0.5"/>
+              <rect x="-40" y="20" width="78" height="18" fill="#fff" opacity="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#loader-brick)"/>
+        </svg>
+      </div>
+
+      <!-- Pulsing warm glow -->
+      <div class="loader-glow absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-[55%] rounded-full" aria-hidden="true"></div>
+
+      <div class="relative flex flex-col items-center gap-6">
+        <!-- Brick oven scene -->
+        <div class="relative h-48 w-80 sm:w-96">
+          <svg id="loaderPizza" viewBox="0 0 440 260" class="h-full w-full">
+            <defs>
+              <linearGradient id="crustGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#F0BB6B"/>
+                <stop offset="60%" stop-color="#D89248"/>
+                <stop offset="100%" stop-color="#A86529"/>
+              </linearGradient>
+              <linearGradient id="cheeseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FFE085"/>
+                <stop offset="55%" stop-color="#F5BA3C"/>
+                <stop offset="100%" stop-color="#E59226"/>
+              </linearGradient>
+              <radialGradient id="pepGrad" cx="35%" cy="30%" r="80%">
+                <stop offset="0%" stop-color="#E04848"/>
+                <stop offset="55%" stop-color="#B01D2B"/>
+                <stop offset="100%" stop-color="#6D0815"/>
+              </radialGradient>
+              <radialGradient id="sauceGrad" cx="50%" cy="40%" r="70%">
+                <stop offset="0%" stop-color="#D4233B"/>
+                <stop offset="100%" stop-color="#9D0208"/>
+              </radialGradient>
+
+              <linearGradient id="brickGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#B85937"/>
+                <stop offset="100%" stop-color="#7A3520"/>
+              </linearGradient>
+              <linearGradient id="brickRow" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#9D4022"/>
+                <stop offset="100%" stop-color="#6D2A15"/>
+              </linearGradient>
+              <radialGradient id="ovenMouthGlow" cx="50%" cy="70%" r="80%">
+                <stop offset="0%" stop-color="#FFB347"/>
+                <stop offset="40%" stop-color="#E89342"/>
+                <stop offset="80%" stop-color="#A12A1F"/>
+                <stop offset="100%" stop-color="#1a0a05"/>
+              </radialGradient>
+              <radialGradient id="emberGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FFD97A" stop-opacity="1"/>
+                <stop offset="100%" stop-color="#E89342" stop-opacity="0"/>
+              </radialGradient>
+              <linearGradient id="flameGrad" x1="50%" y1="100%" x2="50%" y2="0%">
+                <stop offset="0%" stop-color="#F5BA3C"/>
+                <stop offset="60%" stop-color="#E89342"/>
+                <stop offset="100%" stop-color="#D43A2F"/>
+              </linearGradient>
+              <linearGradient id="peelHandle" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#A87445"/>
+                <stop offset="100%" stop-color="#6D4628"/>
+              </linearGradient>
+              <linearGradient id="peelPaddle" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#C99770"/>
+                <stop offset="50%" stop-color="#A87445"/>
+                <stop offset="100%" stop-color="#6D4628"/>
+              </linearGradient>
+              <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/>
+                <feOffset dx="0" dy="2" result="offsetblur"/>
+                <feComponentTransfer><feFuncA type="linear" slope="0.4"/></feComponentTransfer>
+                <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <!-- Clip-path that exactly matches the dome silhouette — used to keep all
+                   brick decorations strictly inside the oven shape -->
+              <clipPath id="domeClip">
+                <path d="M 20 220 L 20 130 Q 20 28 130 28 Q 240 28 240 130 L 240 220 L 20 220 Z"/>
+              </clipPath>
+              <!-- Clip-path for the cave area (used to keep flames + glows inside the mouth) -->
+              <clipPath id="caveClip">
+                <path d="M 75 220 L 75 175 Q 75 130 130 130 Q 185 130 185 175 L 185 220 Z"/>
+              </clipPath>
+            </defs>
+
+            <!-- Hearth/counter at the bottom -->
+            <rect x="0" y="218" width="440" height="42" fill="#3a2418"/>
+            <rect x="0" y="218" width="440" height="4" fill="#5a3825"/>
+            <ellipse cx="130" cy="218" rx="180" ry="14" fill="#1a0a05" opacity="0.5"/>
+
+            <!-- Warm halo overlay -->
+            <ellipse cx="130" cy="195" rx="160" ry="80" fill="url(#emberGlow)" opacity="0.22"/>
+
+            <!-- BRICK BODY (with arch cutout that reveals the cave) -->
+            <g class="oven-body" clip-path="url(#domeClip)">
+              <!-- Brick body color (full dome) -->
+              <path fill="url(#brickGrad)" d="M 20 220 L 20 130 Q 20 28 130 28 Q 240 28 240 130 L 240 220 L 20 220 Z"/>
+
+              <!-- Curved brick rows -->
+              <path d="M 22 60 Q 130 35 238 60" stroke="#5e2b1a" stroke-width="1.5" fill="none" opacity="0.5"/>
+              <path d="M 20 95 Q 130 70 240 95" stroke="#5e2b1a" stroke-width="1.5" fill="none" opacity="0.45"/>
+              <path d="M 20 130 Q 130 110 240 130" stroke="#5e2b1a" stroke-width="1.5" fill="none" opacity="0.4"/>
+              <path d="M 20 165 L 240 165" stroke="#5e2b1a" stroke-width="1.5" fill="none" opacity="0.35"/>
+              <path d="M 20 200 L 240 200" stroke="#5e2b1a" stroke-width="1.5" fill="none" opacity="0.3"/>
+
+              <!-- Brick vertical seams (clipped to dome) -->
+              <g opacity="0.35" stroke="#5e2b1a" stroke-width="1.2" fill="none">
+                <line x1="55"  y1="48"  x2="55"  y2="60"/>
+                <line x1="95"  y1="40"  x2="95"  y2="58"/>
+                <line x1="135" y1="36"  x2="135" y2="58"/>
+                <line x1="175" y1="40"  x2="175" y2="58"/>
+                <line x1="215" y1="50"  x2="215" y2="60"/>
+                <line x1="40"  y1="68"  x2="40"  y2="93"/>
+                <line x1="80"  y1="68"  x2="80"  y2="93"/>
+                <line x1="120" y1="68"  x2="120" y2="93"/>
+                <line x1="160" y1="68"  x2="160" y2="93"/>
+                <line x1="200" y1="68"  x2="200" y2="93"/>
+                <line x1="55"  y1="100" x2="55"  y2="128"/>
+                <line x1="100" y1="100" x2="100" y2="128"/>
+                <line x1="160" y1="100" x2="160" y2="128"/>
+                <line x1="205" y1="100" x2="205" y2="128"/>
+                <line x1="35"  y1="135" x2="35"  y2="163"/>
+                <line x1="50"  y1="170" x2="50"  y2="198"/>
+                <line x1="210" y1="170" x2="210" y2="198"/>
+                <line x1="35"  y1="203" x2="35"  y2="218"/>
+                <line x1="225" y1="203" x2="225" y2="218"/>
+              </g>
+
+              <!-- Soft highlight on the dome's left curve -->
+              <path d="M 22 130 Q 28 60 65 35" stroke="#D88058" stroke-width="2" fill="none" opacity="0.35"/>
+            </g>
+
+
+            <!-- DARK CAVE FLOOR + GLOW (inside the arched cutout — pizza will sit in front of this) -->
+            <g class="oven-interior">
+              <!-- Cave back-wall darkness -->
+              <path d="M 75 220 L 75 175 Q 75 130 130 130 Q 185 130 185 175 L 185 220 Z" fill="#180a05"/>
+              <!-- Arch top heavy shadow -->
+              <path d="M 75 175 Q 75 130 130 130 Q 185 130 185 175 L 178 175 Q 178 138 130 138 Q 82 138 82 175 Z" fill="#0a0402"/>
+              <!-- Hot orange-red glow filling the cave (this is what the pizza will sit IN FRONT of) -->
+              <path d="M 85 218 L 85 178 Q 85 142 130 142 Q 175 142 175 178 L 175 218 Z" fill="url(#ovenMouthGlow)"/>
+              <!-- Brighter glow at the fire bed (bottom of cave) -->
+              <ellipse cx="130" cy="215" rx="48" ry="10" fill="#FFB347" opacity="0.85"/>
+            </g>
+
+            <!-- BACK FLAMES (small flames at the back of the cave, behind where the pizza will sit) -->
+            <g class="back-flames">
+              <ellipse class="ember-glow eg1" cx="100" cy="213" rx="18" ry="5" fill="url(#emberGlow)"/>
+              <ellipse class="ember-glow eg2" cx="160" cy="213" rx="16" ry="4" fill="url(#emberGlow)"/>
+
+              <path class="oven-flame of-back-1" d="M 100 218 C 96 205 100 192 106 184 C 108 192 110 198 108 204 C 114 196 118 200 114 212 C 112 218 108 220 100 218 Z" fill="url(#flameGrad)" opacity="0.95"/>
+              <path class="oven-flame of-back-2" d="M 158 218 C 154 206 156 194 162 186 C 164 194 166 200 164 206 C 170 198 174 204 170 214 C 168 220 164 220 158 218 Z" fill="url(#flameGrad)" opacity="0.95"/>
+            </g>
+
+            <!-- PIZZA INSIDE THE FIRE (rendered HERE so it sits ON TOP of the cave/glow/back-flames but BEHIND the front flames). Starts at cx=130 (inside the fire), animates to cx=290 (outside the oven on the hearth). -->
+            <g class="peel-group">
+              <!-- Wooden peel handle (long thin) -->
+              <rect x="290" y="195" width="150" height="5" rx="2.5" fill="url(#peelHandle)"/>
+              <rect x="425" y="192" width="15" height="11" rx="3" fill="#5a3a20"/>
+
+              <!-- Peel paddle -->
+              <path d="M 235 210 L 235 198 Q 235 188 250 188 L 340 188 Q 350 188 350 198 L 350 210 Q 350 213 340 213 L 245 213 Q 235 213 235 210 Z" fill="url(#peelPaddle)"/>
+
+              <!-- The pizza itself -->
+              <g class="peel-pizza">
+                <ellipse cx="290" cy="207" rx="45" ry="4" fill="black" opacity="0.25"/>
+                <ellipse cx="290" cy="195" rx="50" ry="14" fill="url(#crustGrad)"/>
+                <ellipse cx="290" cy="193" rx="42" ry="11" fill="url(#sauceGrad)"/>
+                <ellipse cx="290" cy="192" rx="38" ry="9" fill="url(#cheeseGrad)"/>
+                <ellipse cx="270" cy="190" rx="3" ry="1.5" fill="#FFF1B0" opacity="0.8"/>
+                <ellipse cx="302" cy="192" rx="3" ry="1.5" fill="#FFF1B0" opacity="0.8"/>
+                <ellipse cx="285" cy="194" rx="2" ry="1" fill="#FFF1B0" opacity="0.8"/>
+                <g filter="url(#softShadow)">
+                  <ellipse cx="270" cy="189" rx="6" ry="3" fill="url(#pepGrad)"/>
+                  <ellipse cx="290" cy="187" rx="6" ry="3" fill="url(#pepGrad)"/>
+                  <ellipse cx="310" cy="190" rx="6" ry="3" fill="url(#pepGrad)"/>
+                  <ellipse cx="278" cy="195" rx="5" ry="2.5" fill="url(#pepGrad)"/>
+                  <ellipse cx="302" cy="195" rx="5" ry="2.5" fill="url(#pepGrad)"/>
+                </g>
+                <ellipse cx="268" cy="188" rx="1.5" ry="0.8" fill="#FF8866" opacity="0.6"/>
+                <ellipse cx="288" cy="186" rx="1.5" ry="0.8" fill="#FF8866" opacity="0.6"/>
+                <ellipse cx="308" cy="189" rx="1.5" ry="0.8" fill="#FF8866" opacity="0.6"/>
+                <circle cx="260" cy="192" r="0.8" fill="#3D7A3D"/>
+                <circle cx="295" cy="191" r="0.8" fill="#3D7A3D"/>
+                <circle cx="315" cy="194" r="0.8" fill="#3D7A3D"/>
+                <circle cx="280" cy="190" r="0.8" fill="#3D7A3D"/>
+              </g>
+            </g>
+
+            <!-- Subtle inner shadow around the mouth arch (depth into oven), drawn over the pizza-in-cave so the dark rim is visible -->
+            <path d="M 75 220 L 75 175 Q 75 130 130 130 Q 185 130 185 175 L 185 220" stroke="#5e2b1a" stroke-width="3" fill="none" opacity="0.6"/>
+
+            <!-- FRONT FLAMES (drawn AFTER pizza — they cover parts of the pizza when it's still in the fire, then the pizza emerges past them) -->
+            <g class="front-flames">
+              <ellipse class="ember-glow eg3" cx="130" cy="216" rx="38" ry="6" fill="url(#emberGlow)"/>
+
+              <path class="oven-flame of-front-1" d="M 115 218 C 110 200 116 184 124 168 C 128 184 132 194 128 204 C 138 188 144 198 138 212 C 134 218 124 222 115 218 Z" fill="url(#flameGrad)"/>
+              <path class="oven-flame of-front-2" d="M 145 220 C 140 200 146 182 154 168 C 158 184 162 196 158 206 C 168 190 174 200 168 214 C 164 220 154 224 145 220 Z" fill="url(#flameGrad)"/>
+              <path class="oven-flame of-front-3" d="M 165 218 C 160 204 164 192 170 184 C 172 192 174 200 172 206 C 180 198 184 204 180 214 C 178 220 172 220 165 218 Z" fill="url(#flameGrad)" opacity="0.92"/>
+            </g>
+
+            <!-- FLOATING EMBERS drift up out of the mouth -->
+            <g class="embers">
+              <circle class="ember-particle ep1" cx="100" cy="180" r="1.5" fill="#FFD97A"/>
+              <circle class="ember-particle ep2" cx="130" cy="180" r="1.8" fill="#F5BA3C"/>
+              <circle class="ember-particle ep3" cx="155" cy="180" r="1.3" fill="#E89342"/>
+              <circle class="ember-particle ep4" cx="115" cy="180" r="1.6" fill="#FFD97A"/>
+              <circle class="ember-particle ep5" cx="145" cy="180" r="1.5" fill="#F5BA3C"/>
+            </g>
+
+            <!-- EMERGING SPARKS — burst out of the mouth following the pizza as it leaves the fire -->
+            <g class="emerge-sparks">
+              <circle class="spark s1" cx="185" cy="190" r="2" fill="#FFD97A"/>
+              <circle class="spark s2" cx="185" cy="195" r="1.6" fill="#F5BA3C"/>
+              <circle class="spark s3" cx="185" cy="200" r="2.2" fill="#E89342"/>
+              <circle class="spark s4" cx="185" cy="205" r="1.4" fill="#FFD97A"/>
+              <circle class="spark s5" cx="185" cy="185" r="1.8" fill="#F5BA3C"/>
+              <circle class="spark s6" cx="185" cy="210" r="1.2" fill="#E89342"/>
+            </g>
+
+            <!-- HEAT HALO around the pizza after it emerges -->
+            <g class="heat-halo">
+              <ellipse class="halo" cx="290" cy="195" rx="62" ry="22" fill="url(#emberGlow)"/>
+            </g>
+
+            <!-- STEAM rises from the emerged pizza -->
+            <g class="steam-group">
+              <path class="steam s1" d="M 275 180 Q 270 165 277 150 Q 283 135 275 120" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+              <path class="steam s2" d="M 295 175 Q 300 160 292 145 Q 285 130 295 115" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+              <path class="steam s3" d="M 315 180 Q 310 165 317 150 Q 323 135 315 120" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="text-center">
+          <h1 class="font-display text-5xl text-cream sm:text-6xl" id="loaderTitle" style="letter-spacing:.04em">
+            <span class="loader-letter">P</span><span class="loader-letter">I</span><span class="loader-letter">Z</span><span class="loader-letter">Z</span><span class="loader-letter">A</span>
+            <span class="loader-letter text-flame">V</span><span class="loader-letter text-flame">I</span><span class="loader-letter text-flame">E</span><span class="loader-letter text-flame">N</span><span class="loader-letter text-flame">N</span><span class="loader-letter text-flame">A</span>
+          </h1>
+          <p class="mt-3 text-[11px] font-bold uppercase tracking-[0.5em] text-amber" id="loaderTagline">Wood Fire · Brick Oven</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top bar -->
+    <div class="bg-navy-deep text-cream/80 text-[12px]">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-2 sm:px-6">
+        <span class="hidden sm:inline">Open today <span id="todayHours" class="font-bold text-amber">10:00 AM – 10:00 PM</span></span>
+        <span class="sm:hidden font-bold text-amber">Open · 10am–10pm</span>
+        <div class="flex items-center gap-5">
+          <a href="tel:+17033190002" class="font-bold text-cream hover:text-amber">(703) 319-0002</a>
+          <a href="https://www.toasttab.com/pizzavienna/rewardsSignup" target="_blank" rel="noopener" class="hidden font-bold uppercase tracking-wider hover:text-amber sm:inline">Sign in / Rewards</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <header id="nav" class="sticky top-0 z-50 bg-navy/95 backdrop-blur">
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+        <a href="#top" class="flex items-center gap-3">
+          <img src="/logo.jpg" alt="" class="h-11 w-11 rounded-full object-cover ring-2 ring-amber/50" />
+          <div class="leading-tight">
+            <p class="font-display text-2xl text-cream" style="letter-spacing:.04em">PIZZA <span class="text-flame">VIENNA</span></p>
+            <p class="text-[9px] font-bold uppercase tracking-[0.3em] text-amber">Wood Fire · Brick Oven</p>
+          </div>
+        </a>
+        <nav class="hidden items-center gap-7 lg:flex">
+          <a href="#menu" class="nav-link">Menu</a>
+          <a href="#specials" class="nav-link">Specials</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#visit" class="nav-link">Visit</a>
+        </nav>
+        <div class="flex items-center gap-2">
+          <button id="cartBtn" class="cart-btn" aria-label="Open cart">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span id="cartBadge" class="cart-badge">0</span>
+          </button>
+          <button id="mobileMenuBtn" class="rounded-md p-2 text-cream lg:hidden" aria-label="Open menu">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div id="mobileMenu" class="hidden border-t border-cream/15 lg:hidden">
+        <nav class="mx-auto flex max-w-6xl flex-col px-4 py-2 sm:px-6">
+          <a href="#menu" class="mobile-link">Menu</a>
+          <a href="#specials" class="mobile-link">Specials</a>
+          <a href="#about" class="mobile-link">About</a>
+          <a href="#visit" class="mobile-link">Visit</a>
+          <a href="https://www.toasttab.com/pizzavienna/rewardsSignup" target="_blank" rel="noopener" class="mobile-link">Sign in / Rewards</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- HERO (Navy with brick oven texture) -->
+      <section class="relative overflow-hidden bg-navy text-cream">
+        <!-- Subtle brick texture -->
+        <div class="absolute inset-0 opacity-[0.06]" aria-hidden="true">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="brick" width="60" height="30" patternUnits="userSpaceOnUse">
+                <rect width="60" height="30" fill="none"/>
+                <rect width="58" height="14" fill="#fff" opacity="0.4"/>
+                <rect x="30" y="16" width="58" height="14" fill="#fff" opacity="0.4"/>
+                <rect x="-30" y="16" width="58" height="14" fill="#fff" opacity="0.4"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#brick)"/>
+          </svg>
+        </div>
+        <!-- Warm glow from "oven" -->
+        <div class="absolute -bottom-32 left-1/2 -translate-x-1/2 h-[500px] w-[800px] rounded-full bg-amber/15 blur-3xl" aria-hidden="true"></div>
+
+        <div class="relative mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 pt-12 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:pb-24 lg:pt-20">
+          <div class="lg:col-span-7" data-reveal>
+            <div class="flex items-center gap-3">
+              <!-- flame icon -->
+              <svg class="flame h-7 w-7" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2 C 9 6 7 8 7 12 C 7 16 9 19 12 22 C 15 19 17 16 17 12 C 17 8 14 6 12 2 Z" fill="#E89342"/>
+                <path d="M12 8 C 10.5 10 10 11 10 13 C 10 15 11 16.5 12 18 C 13 16.5 14 15 14 13 C 14 11 13.5 10 12 8 Z" fill="#D43A2F"/>
+              </svg>
+              <p class="text-[11px] font-bold uppercase tracking-[0.4em] text-amber">Wood Fire · Brick Oven · Since 2019</p>
+            </div>
+            <h1 class="mt-5 font-display text-[60px] leading-[0.92] text-cream sm:text-7xl lg:text-[88px]" style="letter-spacing:.01em">
+              Pizza<br/>the way it<br/><span class="text-amber">should be.</span>
+            </h1>
+            <p class="mt-6 max-w-xl text-lg text-cream/75">
+              Hand-tossed dough. San Marzano sauce. 100% halal toppings.
+              Fired in a real brick oven on Maple Ave — out the door in 15.
+            </p>
+            <div class="mt-8 flex flex-wrap items-center gap-3">
+              <a href="#menu" class="btn-amber text-base">
+                Order Online
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="#menu" class="btn-outline-cream text-base">View Menu</a>
+              <a href="tel:+17033190002" class="inline-flex items-center gap-2 px-1 py-2 text-sm font-bold uppercase tracking-wider text-cream/80 hover:text-amber">
+                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                (703) 319-0002
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5" data-reveal>
+            <div class="relative">
+              <!-- Amber arch frame (echoes the orange bars in the logo) -->
+              <div class="absolute -inset-3 -z-0 hidden lg:block">
+                <div class="h-full w-full rounded-t-[120px] border-2 border-amber/60"></div>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=900&q=85&fit=crop"
+                alt="Wood-fired pizza fresh from the oven"
+                class="relative aspect-[4/5] w-full rounded-t-[100px] object-cover shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] lg:rounded-t-[110px]"
+                loading="eager"
+              />
+              <div class="absolute -left-2 bottom-5 bg-flame px-3 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-cream sm:left-4">
+                100% Halal · Hand-Tossed
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SPECIALS -->
+      <section id="specials" class="bg-paper">
+        <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="block h-px w-8 bg-flame"></span>
+                <p class="text-[11px] font-bold uppercase tracking-[0.35em] text-flame">This Week's Deals</p>
+              </div>
+              <h2 class="mt-2 font-display text-4xl text-navy sm:text-5xl" style="letter-spacing:.01em">Out of the Oven</h2>
+            </div>
+            <a href="#menu" class="text-sm font-bold uppercase tracking-wider text-flame hover:underline">Redeem online →</a>
+          </div>
+
+          <div class="mt-10 grid gap-px overflow-hidden rounded-sm bg-navy/15 sm:grid-cols-3">
+            <article class="bg-paper p-6 sm:p-7">
+              <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-amber-deep">Two-pie Tuesday</p>
+              <h3 class="mt-2 font-serif text-xl font-bold text-navy">2 Large Cheese Pies</h3>
+              <p class="mt-1 text-sm text-navy/65">Two 16″ hand-tossed cheese pies. Toppings +$1.50 each.</p>
+              <p class="mt-5 font-display text-4xl text-flame">$21.99</p>
+            </article>
+            <article class="bg-paper p-6 sm:p-7">
+              <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-amber-deep">Game Day</p>
+              <h3 class="mt-2 font-serif text-xl font-bold text-navy">Large Pie + 20 Wings</h3>
+              <p class="mt-1 text-sm text-navy/65">Large 1-topping pizza + 20 halal wings. Pick your sauce.</p>
+              <p class="mt-5 font-display text-4xl text-flame">$32.99</p>
+            </article>
+            <article class="bg-paper p-6 sm:p-7">
+              <p class="text-[10px] font-bold uppercase tracking-[0.25em] text-amber-deep">Family Feast</p>
+              <h3 class="mt-2 font-serif text-xl font-bold text-navy">XL Pie · 10 Wings · 2L Soda</h3>
+              <p class="mt-1 text-sm text-navy/65">Plus garlic knots. Feeds 4–5 hungry humans.</p>
+              <p class="mt-5 font-display text-4xl text-flame">$39.99</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURED ITEMS -->
+      <section class="bg-cream">
+        <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="block h-px w-8 bg-flame"></span>
+                <p class="text-[11px] font-bold uppercase tracking-[0.35em] text-flame">Crowd Favorites</p>
+              </div>
+              <h2 class="mt-2 font-display text-4xl text-navy sm:text-5xl" style="letter-spacing:.01em">Most Loved</h2>
+            </div>
+            <a href="#menu" class="text-sm font-bold uppercase tracking-wider text-flame hover:underline">See full menu →</a>
+          </div>
+
+          <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <button class="featured-card" data-featured-id="special-pv">
+              <div class="featured-image">
+                <img src="https://images.unsplash.com/photo-1593504049359-74330189a345?w=600&q=80&fit=crop" alt="Pizza Vienna Special" loading="lazy"/>
+                <span class="featured-tag">House Pie</span>
+              </div>
+              <div class="featured-body">
+                <h3>Pizza Vienna Special</h3>
+                <p>Pepperoni, sausage, mushroom, onion, green pepper, black olive.</p>
+                <div class="featured-foot">
+                  <span class="featured-price">$22.99</span>
+                  <span class="featured-add">Customise →</span>
+                </div>
+              </div>
+            </button>
+
+            <button class="featured-card" data-featured-id="wings-20">
+              <div class="featured-image">
+                <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=600&q=80&fit=crop" alt="Halal Buffalo Wings" loading="lazy"/>
+                <span class="featured-tag">Halal</span>
+              </div>
+              <div class="featured-body">
+                <h3>20 Hot Wings</h3>
+                <p>Hand-tossed halal wings, ranch &amp; celery on the side.</p>
+                <div class="featured-foot">
+                  <span class="featured-price">$25.99</span>
+                  <span class="featured-add">Customise →</span>
+                </div>
+              </div>
+            </button>
+
+            <button class="featured-card" data-featured-id="margherita">
+              <div class="featured-image">
+                <img src="https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=600&q=80&fit=crop" alt="Margherita Pizza" loading="lazy"/>
+                <span class="featured-tag">Classic</span>
+              </div>
+              <div class="featured-body">
+                <h3>Margherita</h3>
+                <p>Fresh mozzarella, basil, San Marzano, finished with EVOO.</p>
+                <div class="featured-foot">
+                  <span class="featured-price">$19.49</span>
+                  <span class="featured-add">Customise →</span>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- MENU -->
+      <section id="menu" class="bg-cream pt-4">
+        <div class="mx-auto max-w-6xl px-4 pb-16 sm:px-6 lg:pb-24">
+          <div class="text-center">
+            <div class="inline-flex items-center gap-2">
+              <span class="block h-px w-8 bg-flame"></span>
+              <p class="text-[11px] font-bold uppercase tracking-[0.35em] text-flame">The Full Menu</p>
+              <span class="block h-px w-8 bg-flame"></span>
+            </div>
+            <h2 class="mt-3 font-display text-5xl text-navy sm:text-6xl" style="letter-spacing:.01em">From the Brick Oven</h2>
+            <p class="mt-3 text-navy/65">Prices for pickup &amp; dine-in. Tap any item to add it to your online order.</p>
+          </div>
+
+          <!-- Menu tab nav -->
+          <div class="sticky top-[64px] z-30 -mx-4 mt-10 overflow-x-auto bg-cream/95 px-4 py-3 backdrop-blur sm:mx-0 sm:px-0">
+            <div class="flex min-w-max items-center gap-1 border-b-2 border-navy/15 pb-px sm:gap-2">
+              <a href="#m-pizzas" class="menu-tab">Pizzas</a>
+              <a href="#m-specialty" class="menu-tab">Specialty Pies</a>
+              <a href="#m-wings" class="menu-tab">Wings</a>
+              <a href="#m-stromboli" class="menu-tab">Stromboli &amp; Calzones</a>
+              <a href="#m-subs" class="menu-tab">Subs</a>
+              <a href="#m-salads" class="menu-tab">Salads</a>
+              <a href="#m-sides" class="menu-tab">Sides</a>
+              <a href="#m-desserts" class="menu-tab">Desserts</a>
+              <a href="#m-drinks" class="menu-tab">Drinks</a>
+            </div>
+          </div>
+
+          <div class="mt-10 grid gap-x-12 gap-y-14 lg:grid-cols-2">
+            <div id="m-pizzas" class="menu-block">
+              <header class="menu-head">
+                <h3>Build-Your-Own Pizzas</h3>
+                <p>Hand-tossed dough, San Marzano sauce, whole-milk mozz.</p>
+              </header>
+              <div class="menu-list" data-category="Pizzas"></div>
+            </div>
+
+            <div id="m-specialty" class="menu-block">
+              <header class="menu-head">
+                <h3>Specialty Pies</h3>
+                <p>Our house pies, hand-crafted to order.</p>
+              </header>
+              <div class="menu-list" data-category="Specialty Pies"></div>
+            </div>
+
+            <div id="m-wings" class="menu-block">
+              <header class="menu-head">
+                <h3>Halal Wings</h3>
+                <p>Hand-tossed in your choice of sauce. Served with ranch or blue cheese.</p>
+              </header>
+              <div class="menu-list" data-category="Wings"></div>
+            </div>
+
+            <div id="m-stromboli" class="menu-block">
+              <header class="menu-head">
+                <h3>Stromboli &amp; Calzones</h3>
+                <p>Folded, baked golden, served with marinara.</p>
+              </header>
+              <div class="menu-list" data-category="Stromboli &amp; Calzones"></div>
+            </div>
+
+            <div id="m-subs" class="menu-block">
+              <header class="menu-head">
+                <h3>Subs &amp; Hoagies</h3>
+                <p>Toasted Italian rolls in two sizes.</p>
+              </header>
+              <div class="menu-list" data-category="Subs &amp; Hoagies"></div>
+            </div>
+
+            <div id="m-salads" class="menu-block">
+              <header class="menu-head">
+                <h3>Salads</h3>
+                <p>Pick your dressing. Add grilled halal chicken to any salad.</p>
+              </header>
+              <div class="menu-list" data-category="Salads"></div>
+            </div>
+
+            <div id="m-sides" class="menu-block">
+              <header class="menu-head"><h3>Sides &amp; Starters</h3></header>
+              <div class="menu-list" data-category="Sides &amp; Starters"></div>
+            </div>
+
+            <div id="m-desserts" class="menu-block">
+              <header class="menu-head"><h3>Sweets</h3></header>
+              <div class="menu-list" data-category="Sweets"></div>
+            </div>
+
+            <div id="m-drinks" class="menu-block">
+              <header class="menu-head"><h3>Drinks</h3></header>
+              <div class="menu-list" data-category="Drinks"></div>
+            </div>
+          </div>
+
+          <p class="mt-12 text-center text-sm text-navy/55">
+            Tap any item to customise and add it to your cart. Prices are illustrative — send the live menu and we'll swap in real numbers.
+          </p>
+        </div>
+      </section>
+
+      <!-- ABOUT (Navy with amber arch) -->
+      <section id="about" class="bg-navy text-cream">
+        <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-14 lg:py-24">
+          <div class="lg:col-span-5" data-reveal>
+            <div class="relative">
+              <div class="absolute -inset-3 hidden lg:block">
+                <div class="h-full w-full rounded-t-[120px] border-2 border-amber/50"></div>
+              </div>
+              <img
+                src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=900&q=85&fit=crop"
+                alt="A fresh hand-tossed pizza"
+                class="relative aspect-[4/5] w-full rounded-t-[100px] object-cover sm:rounded-t-[110px]"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div class="lg:col-span-7" data-reveal>
+            <div class="flex items-center gap-2">
+              <span class="block h-px w-8 bg-amber"></span>
+              <p class="text-[11px] font-bold uppercase tracking-[0.35em] text-amber">About</p>
+            </div>
+            <h2 class="mt-3 font-display text-5xl leading-[0.95] text-cream sm:text-6xl" style="letter-spacing:.01em">
+              A family pizza shop<br/>on <span class="text-amber">Maple Ave.</span>
+            </h2>
+            <div class="mt-6 space-y-4 text-cream/75">
+              <p>
+                We opened in 2019 with one rule: do pizza right, every time. Our dough is mixed in-house and rises overnight.
+                Our sauce uses San Marzano tomatoes — nothing from a can. All meats are 100% halal.
+              </p>
+              <p>
+                The wings are hand-tossed to order. The subs are toasted. The cannoli is filled when you ask for it. We're a
+                neighborhood place, and we'd rather make ten great pies than a hundred mediocre ones.
+              </p>
+              <p class="font-bold text-amber">— The Pizza Vienna family</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VISIT -->
+      <section id="visit" class="bg-paper">
+        <div class="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-12 lg:gap-14 lg:py-24">
+          <div class="lg:col-span-7" data-reveal>
+            <div class="flex items-center gap-2">
+              <span class="block h-px w-8 bg-flame"></span>
+              <p class="text-[11px] font-bold uppercase tracking-[0.35em] text-flame">Visit</p>
+            </div>
+            <h2 class="mt-3 font-display text-5xl text-navy sm:text-6xl" style="letter-spacing:.01em">Find Us On Maple Ave.</h2>
+
+            <a
+              href="https://maps.google.com/?q=235+Maple+Ave+E,+Vienna,+VA+22180"
+              target="_blank"
+              rel="noopener"
+              class="group mt-8 block overflow-hidden rounded-sm border-2 border-navy/15"
+            >
+              <div class="relative aspect-[16/10] bg-cream-deep">
+                <svg class="absolute inset-0 h-full w-full text-navy/15" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <defs>
+                    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+                      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="currentColor" stroke-width="0.6"/>
+                    </pattern>
+                  </defs>
+                  <rect width="400" height="250" fill="url(#grid)"/>
+                  <line x1="0" y1="130" x2="400" y2="130" stroke="#fff" stroke-width="18"/>
+                  <line x1="0" y1="130" x2="400" y2="130" stroke="#fff" stroke-width="12"/>
+                  <text x="22" y="126" fill="currentColor" font-family="Inter,sans-serif" font-size="9" font-weight="700" opacity="0.45">MAPLE AVE E</text>
+                  <line x1="120" y1="0" x2="120" y2="250" stroke="#fff" stroke-width="9"/>
+                  <line x1="290" y1="0" x2="290" y2="250" stroke="#fff" stroke-width="9"/>
+                  <rect x="20" y="170" width="80" height="60" rx="4" fill="#86c87a" opacity="0.4"/>
+                  <rect x="320" y="20" width="70" height="60" rx="4" fill="#86c87a" opacity="0.4"/>
+                  <rect x="135" y="30" width="50" height="80" rx="2" fill="currentColor" opacity="0.1"/>
+                  <rect x="195" y="40" width="65" height="70" rx="2" fill="currentColor" opacity="0.1"/>
+                  <rect x="135" y="155" width="40" height="50" rx="2" fill="currentColor" opacity="0.1"/>
+                  <rect x="190" y="155" width="55" height="60" rx="2" fill="currentColor" opacity="0.1"/>
+                  <rect x="260" y="160" width="60" height="55" rx="2" fill="currentColor" opacity="0.1"/>
+                </svg>
+                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-full">
+                  <svg class="h-14 w-14 text-flame drop-shadow-[0_4px_10px_rgba(212,58,47,0.5)]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                    <circle cx="12" cy="9" r="3" fill="#F5EBD8"/>
+                  </svg>
+                </div>
+                <div class="absolute left-1/2 top-1/2 -translate-x-1/2 translate-y-2 whitespace-nowrap rounded-sm bg-navy px-3 py-1 text-xs font-bold uppercase tracking-wider text-cream">
+                  Pizza Vienna
+                </div>
+                <div class="pointer-events-none absolute bottom-4 right-4 rounded-sm bg-cream px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-navy shadow-md transition-transform group-hover:translate-x-1">
+                  Open in Google Maps →
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="space-y-7 lg:col-span-5" data-reveal>
+            <div>
+              <p class="info-label">Address</p>
+              <p class="mt-1 font-serif text-2xl font-bold text-navy">235 Maple Ave E</p>
+              <p class="text-navy/70">Vienna, VA 22180</p>
+              <a href="https://maps.google.com/?q=235+Maple+Ave+E,+Vienna,+VA+22180" target="_blank" rel="noopener" class="mt-2 inline-block text-sm font-bold uppercase tracking-wider text-flame hover:underline">Get directions →</a>
+            </div>
+
+            <div>
+              <p class="info-label">Phone</p>
+              <a href="tel:+17033190002" class="mt-1 block font-display text-4xl text-navy hover:text-flame" style="letter-spacing:.02em">(703) 319-0002</a>
+              <p class="text-sm text-navy/65">Pickup ready in 15–20 minutes.</p>
+            </div>
+
+            <div>
+              <p class="info-label">Hours</p>
+              <dl class="mt-2 divide-y divide-navy/10 border-y border-navy/10">
+                <div class="hours-row"><dt>Monday – Thursday</dt><dd>10:00 AM – 10:00 PM</dd></div>
+                <div class="hours-row"><dt>Friday – Saturday</dt><dd>10:00 AM – 12:00 AM</dd></div>
+                <div class="hours-row"><dt>Sunday</dt><dd>11:00 AM – 9:30 PM</dd></div>
+              </dl>
+            </div>
+
+            <div>
+              <p class="info-label">Payments</p>
+              <p class="mt-1 text-sm text-navy/70">Cash · Credit · Debit · Apple Pay · Google Pay · Tap to Pay · Venmo · Cash App · PayPal · Gift Cards</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-deep text-cream">
+      <div class="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-12">
+        <div class="lg:col-span-5">
+          <div class="flex items-center gap-3">
+            <img src="/logo.jpg" alt="" class="h-12 w-12 rounded-full object-cover ring-2 ring-amber/40"/>
+            <div>
+              <p class="font-display text-2xl text-cream" style="letter-spacing:.04em">PIZZA <span class="text-flame">VIENNA</span></p>
+              <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-amber">Wood Fire · Brick Oven</p>
+            </div>
+          </div>
+          <p class="mt-5 max-w-sm text-sm text-cream/65">
+            235 Maple Ave E, Vienna, VA 22180<br/>
+            <a href="tel:+17033190002" class="text-cream hover:text-amber">(703) 319-0002</a>
+          </p>
+          <div class="mt-5 flex items-center gap-2">
+            <a href="https://www.instagram.com/pizza_vienna/" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.facebook.com/pizzavienna235" target="_blank" rel="noopener" aria-label="Facebook" class="social-link">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 10-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0022 12z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@pizzavienna" target="_blank" rel="noopener" aria-label="TikTok" class="social-link">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/></svg>
+            </a>
+            <a href="https://www.yelp.com/biz/pizza-vienna-vienna" target="_blank" rel="noopener" aria-label="Yelp" class="social-link">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M14.3 4.1L17.5 17l-4.7-1.1V3.4l1.5.7zM10.5 14.7L7.3 16.4l-.7-7.4 3.4 5.3.5.4zm5.2 1.6l-3.4-.8 3.4 5.2 1.5-2.6-1.5-1.8zM7.5 8.2L3.8 4.5 6 7.6l3.6 1.2-2.1-.6zm.6 3.3L4.5 14l4.6 1.1-.8-3.6h-.2z"/></svg>
+            </a>
+            <a href="https://www.tripadvisor.com/Restaurant_Review-g60996-d21047906-Reviews-Pizza_Vienna-Vienna_Fairfax_County_Virginia.html" target="_blank" rel="noopener" aria-label="TripAdvisor" class="social-link">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 8.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zM6.5 12a1 1 0 11-2 0 1 1 0 012 0zm13 0a1 1 0 11-2 0 1 1 0 012 0zM12 4C7 4 3 8 3 13c0 1.5.4 2.9 1 4.1l-1.4 1.5h4.7c1.3.9 2.9 1.4 4.7 1.4s3.4-.5 4.7-1.4h4.7L20 17.1c.6-1.2 1-2.6 1-4.1 0-5-4-9-9-9z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-8 lg:col-span-7 lg:grid-cols-3">
+          <div>
+            <p class="footer-head">Order</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="#menu" class="footer-link">Order Online</a></li>
+              <li><a href="https://www.toasttab.com/pizzavienna/rewardsSignup" target="_blank" rel="noopener" class="footer-link">Sign in / Rewards</a></li>
+              <li><a href="https://www.toasttab.com/pizzavienna/giftcards" target="_blank" rel="noopener" class="footer-link">Gift Cards</a></li>
+              <li><a href="https://www.toasttab.com/pizzavienna/marketing-signup" target="_blank" rel="noopener" class="footer-link">Email Updates</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer-head">Menu</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="#m-pizzas" class="footer-link">Pizzas</a></li>
+              <li><a href="#m-wings" class="footer-link">Wings</a></li>
+              <li><a href="#m-subs" class="footer-link">Subs</a></li>
+              <li><a href="#m-salads" class="footer-link">Salads</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="footer-head">Visit</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li><a href="#about" class="footer-link">About</a></li>
+              <li><a href="#visit" class="footer-link">Hours &amp; Map</a></li>
+              <li><a href="#specials" class="footer-link">Specials</a></li>
+              <li><a href="#" class="footer-link">Catering</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-cream/10">
+        <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-3 px-4 py-5 text-xs text-cream/55 sm:flex-row sm:items-center sm:px-6">
+          <p>© <span id="year"></span> Pizza Vienna. All rights reserved.</p>
+          <div class="flex gap-5">
+            <a href="#" class="hover:text-amber">Privacy</a>
+            <a href="#" class="hover:text-amber">Terms</a>
+            <a href="#" class="hover:text-amber">Accessibility</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating mobile cart CTA -->
+    <button
+      id="floatingOrder"
+      type="button"
+      class="fixed bottom-4 right-4 z-40 inline-flex items-center gap-2 rounded-full bg-flame px-5 py-3 text-sm font-bold uppercase tracking-wider text-cream shadow-2xl shadow-flame/40 transition-all hover:bg-flame-deep hover:scale-105 lg:hidden"
+      onclick="document.getElementById('cartBtn')?.click()"
+    >
+      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Open Cart
+    </button>
+
+    <!-- CART DRAWER -->
+    <div id="cartOverlay" class="cart-overlay" aria-hidden="true"></div>
+    <aside id="cartDrawer" class="cart-drawer" role="dialog" aria-label="Shopping cart" aria-hidden="true">
+      <header class="cart-head">
+        <button id="cartBackBtn" class="cart-back cart-back-hidden" aria-label="Back">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M11 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="cart-head-titles">
+          <p id="cartHeadSub" class="text-[11px] font-bold uppercase tracking-[0.3em] text-amber">Your Order</p>
+          <h2 id="cartHeadTitle" class="font-display text-3xl text-cream">Cart</h2>
+        </div>
+        <button id="cartCloseBtn" class="cart-close" aria-label="Close cart">
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M6 18L18 6" stroke-linecap="round"/></svg>
+        </button>
+      </header>
+      <div id="cartBody" class="cart-body"></div>
+      <footer id="cartFoot" class="cart-foot cart-foot-hidden"></footer>
+    </aside>
+
+    <!-- ITEM CONFIG MODAL -->
+    <div id="modalOverlay" class="modal-overlay" aria-hidden="true"></div>
+    <div id="itemModal" class="item-modal" role="dialog" aria-label="Customise item" aria-hidden="true">
+      <div id="modalBody" class="item-modal-inner"></div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
