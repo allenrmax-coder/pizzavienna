@@ -1,10 +1,11 @@
 import { defineConfig } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 
-// Served from https://allenrmax-coder.github.io/pizzavienna/ on GitHub Pages,
-// so production assets need the "/pizzavienna/" base. Dev server stays at root.
-export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/pizzavienna/' : '/',
+// Netlify and local dev serve from the domain root, so base stays "/".
+// GitHub Pages serves under /pizzavienna/ — set GITHUB_PAGES=true when
+// building specifically for Pages (the gh-pages deploy does this).
+export default defineConfig({
+  base: process.env.GITHUB_PAGES === 'true' ? '/pizzavienna/' : '/',
   plugins: [tailwindcss()],
   server: {
     host: '127.0.0.1',
@@ -14,4 +15,4 @@ export default defineConfig(({ command }) => ({
     target: 'es2020',
     cssMinify: true,
   },
-}))
+})

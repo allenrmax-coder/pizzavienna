@@ -1,0 +1,8 @@
+# Netlify build settings for this Vite app.
+# Netlify builds from the repo source (main) and serves the compiled dist/.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
