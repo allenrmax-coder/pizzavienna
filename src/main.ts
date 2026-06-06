@@ -11,8 +11,8 @@ function dismissLoader() {
   }, 800)
 }
 
-// Show loader long enough for the full pizza-assembly animation
-// (~3s to build, ~0.5s to admire), then fade away.
+// Keep the loader up long enough for the slice to animate in and the
+// wordmark to reveal, then fade away.
 const minLoaderTime = 3500
 const startedAt = performance.now()
 

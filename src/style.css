@@ -124,6 +124,7 @@
   }
   .featured-image {
     @apply relative aspect-[4/3] overflow-hidden;
+    background: linear-gradient(135deg, var(--color-navy) 0%, var(--color-navy-deep) 100%);
   }
   .featured-image img {
     @apply h-full w-full object-cover transition-transform duration-500;
@@ -197,7 +198,7 @@
   }
 
   .menu-card {
-    @apply relative block overflow-hidden rounded-lg bg-paper text-left transition-all duration-300;
+    @apply relative block overflow-hidden rounded-sm bg-paper text-left transition-all duration-300;
     border: 1px solid rgba(15, 27, 51, 0.08);
     cursor: pointer;
   }
@@ -277,48 +278,6 @@
   .menu-list {
     @apply mt-6 grid gap-3;
   }
-  .menu-foot {
-    @apply mt-5 border-t border-navy/15 pt-3 text-xs leading-relaxed text-navy/55;
-  }
-
-  /* ============ Menu row (image + text + add) ============ */
-  .menu-row {
-    @apply flex w-full items-stretch gap-4 overflow-hidden rounded-md border border-navy/10 bg-white text-left transition-all;
-  }
-  .menu-row:hover {
-    border-color: rgba(212, 58, 47, 0.45);
-    box-shadow: 0 12px 24px -14px rgba(15, 27, 51, 0.25);
-    transform: translateY(-2px);
-  }
-  .menu-row-img {
-    @apply h-24 w-24 flex-none object-cover sm:h-28 sm:w-28;
-  }
-  .menu-row-body {
-    @apply flex-1 py-3 pr-2 sm:py-4;
-  }
-  .menu-row-body h4 {
-    font-family: var(--font-serif);
-    font-weight: 700;
-    @apply text-base text-navy sm:text-lg;
-  }
-  .menu-row-body p {
-    @apply mt-0.5 line-clamp-2 max-w-md text-xs leading-snug text-navy/60 sm:text-sm;
-  }
-  .menu-row-right {
-    @apply flex flex-col items-end justify-between gap-2 py-3 pr-4 sm:py-4;
-  }
-  .menu-row-price {
-    font-family: var(--font-display);
-    @apply text-lg uppercase tracking-wide text-flame sm:text-xl;
-  }
-  .menu-row-add {
-    @apply inline-flex h-9 w-9 flex-none items-center justify-center rounded-full bg-navy text-lg font-bold leading-none text-cream transition-all;
-    line-height: 1;
-  }
-  .menu-row:hover .menu-row-add {
-    background: var(--color-flame);
-    transform: scale(1.1);
-  }
 
   /* ============ Cart button + badge in nav ============ */
   .cart-btn {
@@ -360,10 +319,6 @@
   }
   .qty-stepper-lg .qty-num {
     @apply min-w-[32px] text-base text-navy;
-  }
-
-  .menu-foot {
-    @apply mt-5 border-t border-navy/15 pt-3 text-xs leading-relaxed text-navy/55;
   }
 
   /* ============ Visit info ============ */
@@ -412,72 +367,46 @@
 
 /* Pulsing warm glow halo behind the pizza */
 .loader-glow {
-  background: radial-gradient(circle, rgba(232,147,66,0.35) 0%, rgba(212,58,47,0.15) 35%, transparent 70%);
-  animation: glowPulse 3s ease-in-out infinite;
-  filter: blur(20px);
+  background: radial-gradient(circle, rgba(255,176,92,0.42) 0%, rgba(212,58,47,0.16) 42%, transparent 70%);
+  animation: glowPulse 3.2s ease-in-out infinite;
+  filter: blur(22px);
 }
 @keyframes glowPulse {
-  0%, 100% { transform: translate(-50%, -55%) scale(1); opacity: 0.8; }
-  50%      { transform: translate(-50%, -55%) scale(1.1); opacity: 1; }
+  0%, 100% { transform: scale(1);    opacity: 0.7; }
+  50%      { transform: scale(1.08); opacity: 0.95; }
 }
 
-/* ============ Brick oven scene (cleaner illustrated style) ============ */
+/* ============ Pizza slice — floating loader graphic ============ */
 
-/* Pizza-on-peel slides smoothly from inside the fire to outside the oven.
-   Pure horizontal motion (no jerky lift). 2.2s slide, eased like material design. */
-.peel-group {
-  transform: translateX(-165px);
-  animation: peelSlide 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s forwards;
-}
-@keyframes peelSlide {
-  to { transform: translateX(0); }
-}
-
-/* Pizza settles with a gentle bob after sliding out */
-.peel-pizza {
-  transform-box: fill-box;
-  transform-origin: 290px 195px;
-  animation: settleBob 3s ease-in-out 3s infinite;
-}
-@keyframes settleBob {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-1.5px); }
-}
-
-/* Flames flicker softly — slower, gentler than before */
-.fl {
-  transform-box: fill-box;
-  transform-origin: center bottom;
-}
-.fl.fl1 { animation: flickerSoft 1.1s ease-in-out infinite; }
-.fl.fl2 { animation: flickerSoft 1.0s ease-in-out infinite 0.25s; }
-.fl.fl3 { animation: flickerSoft 1.2s ease-in-out infinite 0.5s; }
-@keyframes flickerSoft {
-  0%, 100% { transform: scaleY(1) scaleX(1); }
-  50%      { transform: scaleY(1.08) scaleX(0.94); }
-}
-
-/* Steam — gentle vertical wisps that fade in after pizza emerges */
-.steam {
+/* One-shot entrance: the slice fades and scales in. */
+.slice-enter {
+  transform-origin: 50% 45%;
   opacity: 0;
-  animation: showSteam 0.6s ease-out 2.9s forwards;
+  animation: sliceEnter 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
 }
-.st {
-  stroke-dasharray: 40;
-  stroke-dashoffset: 40;
-  opacity: 0;
+@keyframes sliceEnter {
+  from { opacity: 0; transform: scale(0.82) translateY(14px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
-.st.st1 { animation: steamRise 3s ease-in-out 3s infinite; }
-.st.st2 { animation: steamRise 3s ease-in-out 3.4s infinite; }
-.st.st3 { animation: steamRise 3s ease-in-out 3.8s infinite; }
-@keyframes steamRise {
-  0%   { stroke-dashoffset: 40; opacity: 0; }
-  25%  { opacity: 0.5; }
-  70%  { stroke-dashoffset: 0; opacity: 0.4; }
-  100% { stroke-dashoffset: -30; opacity: 0; }
+
+/* The whole slice floats and tilts gently, forever. */
+.slice {
+  transform-origin: 50% 42%;
+  animation: sliceFloat 4.2s ease-in-out 0.8s infinite;
+  will-change: transform;
 }
-@keyframes showSteam {
-  to { opacity: 1; }
+@keyframes sliceFloat {
+  0%, 100% { transform: translateY(0)    rotate(0deg);   }
+  50%      { transform: translateY(-9px) rotate(0.8deg); }
+}
+
+/* Respect users who prefer less motion: hold the slice still and visible. */
+@media (prefers-reduced-motion: reduce) {
+  .slice,
+  .slice-enter {
+    animation: none;
+    opacity: 1;
+  }
 }
 
 /* ============ Letter reveal ============ */

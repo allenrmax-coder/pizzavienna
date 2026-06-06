@@ -27,124 +27,20 @@
   <body class="bg-cream text-navy antialiased">
     <!-- Loader -->
     <div id="loader" class="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden">
-      <!-- Pulsing warm glow behind the scene -->
-      <div class="loader-glow absolute left-1/2 top-1/2 h-[480px] w-[680px] -translate-x-1/2 -translate-y-[58%] rounded-full" aria-hidden="true"></div>
-
       <div class="relative flex flex-col items-center gap-8">
-        <!-- Brick oven scene — clean illustration style -->
-        <div class="relative h-48 w-80 sm:w-96">
-          <svg id="loaderPizza" viewBox="0 0 440 280" class="h-full w-full">
-            <defs>
-              <!-- Subtle warm gradient for the fire interior -->
-              <radialGradient id="fireGlow" cx="50%" cy="100%" r="70%">
-                <stop offset="0%" stop-color="#FFC85A"/>
-                <stop offset="50%" stop-color="#E0651F"/>
-                <stop offset="100%" stop-color="#3a0a05"/>
-              </radialGradient>
-              <!-- Flame body — bright yellow center fading to amber -->
-              <linearGradient id="flameBody" x1="50%" y1="100%" x2="50%" y2="0%">
-                <stop offset="0%" stop-color="#FFD668"/>
-                <stop offset="100%" stop-color="#FF8A2A"/>
-              </linearGradient>
-              <!-- Pizza crust — flat warm brown -->
-              <linearGradient id="crust" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="#E1A763"/>
-                <stop offset="100%" stop-color="#A86C30"/>
-              </linearGradient>
-              <!-- Soft dome shadow at the base -->
-              <linearGradient id="domeShade" x1="50%" y1="0%" x2="50%" y2="100%">
-                <stop offset="0%" stop-color="#C04E2C" stop-opacity="0"/>
-                <stop offset="80%" stop-color="#5a1c12" stop-opacity="0.35"/>
-                <stop offset="100%" stop-color="#3d0e07" stop-opacity="0.55"/>
-              </linearGradient>
-
-              <clipPath id="domeClip">
-                <path d="M 30 220 L 30 130 Q 30 30 130 30 Q 230 30 230 130 L 230 220 Z"/>
-              </clipPath>
-            </defs>
-
-            <!-- Hearth -->
-            <rect x="0" y="220" width="440" height="60" fill="#1f140e"/>
-            <rect x="0" y="220" width="440" height="2" fill="#4a2f20"/>
-            <ellipse cx="130" cy="220" rx="170" ry="6" fill="#0a0402" opacity="0.5"/>
-
-            <!-- OVEN DOME — clean terracotta with subtle inner shading -->
-            <g clip-path="url(#domeClip)">
-              <path d="M 30 220 L 30 130 Q 30 30 130 30 Q 230 30 230 130 L 230 220 Z" fill="#B14528"/>
-              <!-- Soft inner shading at base -->
-              <rect x="0" y="120" width="260" height="100" fill="url(#domeShade)"/>
-              <!-- Two subtle brick rows for hint of texture, very low contrast -->
-              <path d="M 38 95 Q 130 78 222 95"  stroke="#7a2818" stroke-width="1" fill="none" opacity="0.35"/>
-              <path d="M 32 145 Q 130 132 228 145" stroke="#7a2818" stroke-width="1" fill="none" opacity="0.3"/>
-              <!-- Highlight on top-left for depth -->
-              <ellipse cx="80" cy="65" rx="42" ry="20" fill="#fff" opacity="0.08"/>
-            </g>
-
-            <!-- Rim shadow around the dome silhouette (subtle outline) -->
-            <path d="M 30 220 L 30 130 Q 30 30 130 30 Q 230 30 230 130 L 230 220" stroke="#3d0e07" stroke-width="1.5" fill="none" opacity="0.6"/>
-
-            <!-- OVEN MOUTH (cave) — clean arched opening with warm gradient -->
-            <path d="M 80 220 L 80 170 Q 80 125 130 125 Q 180 125 180 170 L 180 220 Z" fill="url(#fireGlow)"/>
-            <!-- Inner rim darkening (depth into the cave) -->
-            <path d="M 80 170 Q 80 125 130 125 Q 180 125 180 170 L 175 170 Q 175 132 130 132 Q 85 132 85 170 Z" fill="#1a0a05" opacity="0.7"/>
-            <!-- Bright glow at fire bed -->
-            <ellipse cx="130" cy="215" rx="42" ry="6" fill="#FFB347" opacity="0.85"/>
-
-            <!-- Flames inside the cave — three simple shapes, animated gently -->
-            <g class="flames">
-              <path class="fl fl1" d="M 105 218 Q 100 200 110 184 Q 113 196 110 206 Q 118 196 117 210 Q 114 218 105 218 Z" fill="url(#flameBody)"/>
-              <path class="fl fl2" d="M 132 220 Q 124 198 134 176 Q 140 192 135 204 Q 146 192 146 210 Q 142 220 132 220 Z" fill="url(#flameBody)"/>
-              <path class="fl fl3" d="M 158 218 Q 154 202 162 186 Q 165 198 162 206 Q 170 198 169 210 Q 167 218 158 218 Z" fill="url(#flameBody)"/>
-            </g>
-
-            <!-- PIZZA ON PEEL — slides from inside fire to outside.
-                 Pizza centered at cx=290 in this frame; animation starts at translateX(-160px). -->
-            <g class="peel-group">
-              <!-- Wooden peel handle -->
-              <rect x="290" y="194" width="145" height="4" rx="2" fill="#7E5631"/>
-              <rect x="420" y="190" width="15" height="11" rx="2.5" fill="#5a3a20"/>
-
-              <!-- Paddle -->
-              <path d="M 240 211 L 240 198 Q 240 188 252 188 L 340 188 Q 350 188 350 198 L 350 211 Q 350 213 340 213 L 250 213 Q 240 213 240 211 Z" fill="#A87445"/>
-              <!-- Paddle subtle wood grain highlight -->
-              <path d="M 250 193 L 340 193" stroke="#c9a26d" stroke-width="0.8" opacity="0.5"/>
-
-              <!-- Pizza shadow under -->
-              <ellipse cx="290" cy="208" rx="45" ry="3" fill="#000" opacity="0.18"/>
-
-              <!-- Pizza — clean illustrated style -->
-              <g class="peel-pizza">
-                <!-- Outer crust ring -->
-                <ellipse cx="290" cy="194" rx="48" ry="13" fill="url(#crust)"/>
-                <!-- Crust char marks (subtle, optional) -->
-                <ellipse cx="252" cy="192" rx="3" ry="2" fill="#6b3a18" opacity="0.45"/>
-                <ellipse cx="324" cy="195" rx="2.5" ry="1.5" fill="#6b3a18" opacity="0.4"/>
-                <!-- Sauce + cheese layer -->
-                <ellipse cx="290" cy="192" rx="40" ry="10" fill="#C8102E"/>
-                <ellipse cx="290" cy="192" rx="38" ry="9" fill="#E8B344"/>
-                <!-- Pepperoni — flat with subtle highlight -->
-                <circle cx="273" cy="189" r="4" fill="#9d2027"/>
-                <circle cx="295" cy="187" r="4.2" fill="#9d2027"/>
-                <circle cx="312" cy="190" r="3.8" fill="#9d2027"/>
-                <circle cx="280" cy="196" r="3.6" fill="#9d2027"/>
-                <circle cx="304" cy="196" r="3.4" fill="#9d2027"/>
-                <!-- Pepperoni gloss -->
-                <ellipse cx="272" cy="187.5" rx="1.6" ry="1" fill="#e04848" opacity="0.7"/>
-                <ellipse cx="294" cy="185.5" rx="1.6" ry="1" fill="#e04848" opacity="0.7"/>
-                <ellipse cx="311" cy="188.5" rx="1.4" ry="0.8" fill="#e04848" opacity="0.7"/>
-              </g>
-            </g>
-
-            <!-- Inner mouth shadow drawn ON TOP of the pizza-in-cave so the dark rim still defines the arch when pizza is inside -->
-            <path d="M 80 220 L 80 170 Q 80 125 130 125 Q 180 125 180 170 L 180 220" stroke="#3d0e07" stroke-width="2" fill="none" opacity="0.7"/>
-
-            <!-- STEAM (rises after pizza emerges) -->
-            <g class="steam">
-              <path class="st st1" d="M 278 180 Q 274 168 280 156" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-              <path class="st st2" d="M 293 178 Q 298 165 290 153" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-              <path class="st st3" d="M 308 180 Q 304 167 311 155" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-            </g>
-          </svg>
+        <!-- Pizza slice — melty cheese drip -->
+        <div class="relative h-56 w-56 sm:h-64 sm:w-64">
+          <!-- Warm glow behind the slice -->
+          <div class="loader-glow absolute left-1/2 top-[54%] h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full" aria-hidden="true"></div>
+          <div class="slice-enter relative h-full w-full">
+            <img
+              id="loaderPizza"
+              src="/pizza-slice.png"
+              alt="Slice of pepperoni pizza with melting cheese"
+              class="slice h-full w-full select-none object-contain"
+              draggable="false"
+            />
+          </div>
         </div>
 
         <div class="text-center">
@@ -278,14 +174,14 @@
 
       <!-- SPECIALS -->
       <section id="specials" class="bg-paper">
-        <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
+        <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
           <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <div class="flex items-center gap-2">
                 <span class="block h-px w-8 bg-flame"></span>
                 <p class="text-[11px] font-bold uppercase tracking-[0.35em] text-flame">This Week's Deals</p>
               </div>
-              <h2 class="mt-2 font-display text-4xl text-navy sm:text-5xl" style="letter-spacing:.01em">Out of the Oven</h2>
+              <h2 class="mt-2 font-display text-5xl text-navy sm:text-6xl" style="letter-spacing:.01em">Out of the Oven</h2>
             </div>
             <a href="#menu" class="text-sm font-bold uppercase tracking-wider text-flame hover:underline">Redeem online →</a>
           </div>
@@ -306,14 +202,14 @@
 
       <!-- FEATURED ITEMS -->
       <section class="bg-cream">
-        <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
+        <div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:py-24">
           <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <div class="flex items-center gap-2">
                 <span class="block h-px w-8 bg-flame"></span>
                 <p class="text-[11px] font-bold uppercase tracking-[0.35em] text-flame">Crowd Favorites</p>
               </div>
-              <h2 class="mt-2 font-display text-4xl text-navy sm:text-5xl" style="letter-spacing:.01em">Most Loved</h2>
+              <h2 class="mt-2 font-display text-5xl text-navy sm:text-6xl" style="letter-spacing:.01em">Most Loved</h2>
             </div>
             <a href="#menu" class="text-sm font-bold uppercase tracking-wider text-flame hover:underline">See full menu →</a>
           </div>
@@ -329,7 +225,7 @@
                 <p>Pepperoni, sausage, mushroom, onion, green pepper, black olive.</p>
                 <div class="featured-foot">
                   <span class="featured-price">$22.99</span>
-                  <span class="featured-add">Customise →</span>
+                  <span class="featured-add">Customize →</span>
                 </div>
               </div>
             </button>
@@ -344,7 +240,7 @@
                 <p>Hand-tossed halal wings, ranch &amp; celery on the side.</p>
                 <div class="featured-foot">
                   <span class="featured-price">$25.99</span>
-                  <span class="featured-add">Customise →</span>
+                  <span class="featured-add">Customize →</span>
                 </div>
               </div>
             </button>
@@ -359,7 +255,7 @@
                 <p>Fresh mozzarella, basil, San Marzano, finished with EVOO.</p>
                 <div class="featured-foot">
                   <span class="featured-price">$19.49</span>
-                  <span class="featured-add">Customise →</span>
+                  <span class="featured-add">Customize →</span>
                 </div>
               </div>
             </button>
@@ -381,7 +277,7 @@
           </div>
 
           <!-- Menu tab nav -->
-          <div class="sticky top-[64px] z-30 -mx-4 mt-10 overflow-x-auto bg-cream/95 px-4 py-3 backdrop-blur sm:mx-0 sm:px-0">
+          <div class="sticky top-[68px] z-30 -mx-4 mt-10 overflow-x-auto bg-cream/95 px-4 py-3 backdrop-blur sm:mx-0 sm:px-0">
             <div class="flex min-w-max items-center gap-1 border-b-2 border-navy/15 pb-px sm:gap-2">
               <a href="#m-pizzas" class="menu-tab">Pizzas</a>
               <a href="#m-specialty" class="menu-tab">Specialty Pies</a>
@@ -461,7 +357,7 @@
           </div>
 
           <p class="mt-12 text-center text-sm text-navy/55">
-            Tap any item to customise and add it to your cart. Prices are illustrative — send the live menu and we'll swap in real numbers.
+            Tap any item to customize and add it to your cart.
           </p>
         </div>
       </section>
@@ -698,7 +594,7 @@
 
     <!-- ITEM CONFIG MODAL -->
     <div id="modalOverlay" class="modal-overlay" aria-hidden="true"></div>
-    <div id="itemModal" class="item-modal" role="dialog" aria-label="Customise item" aria-hidden="true">
+    <div id="itemModal" class="item-modal" role="dialog" aria-label="Customize item" aria-hidden="true">
       <div id="modalBody" class="item-modal-inner"></div>
     </div>
 
